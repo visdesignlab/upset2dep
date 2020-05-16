@@ -15,7 +15,7 @@ jobs:
       - name: Install Dependencies
         run: npm install
       - name: Build App
-        run: npm run Build
+        run: npm run build
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
