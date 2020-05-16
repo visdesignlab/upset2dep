@@ -1,0 +1,23 @@
+name: Semantic Release
+on: push
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-versions: [12.x]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup NodeJS ${{ matrix.node-versions }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-versions }}
+      - name: Install Dependencies
+        run: npm install
+      - name: Build App
+        run: npm run Build
+      - name: Semantic Release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npx semantic-release
