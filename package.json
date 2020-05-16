@@ -2,6 +2,7 @@
   "name": "upset2dep",
   "version": "0.1.0",
   "private": false,
+  "main": "dist/index.js",
   "homepage": "https://vdl.sci.utah.edu/upset2dep/",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
@@ -43,6 +44,17 @@
       "last 1 safari version"
     ]
   },
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/github",
+    "@semantic-release/npm",
+    "@semantic-release/git"
+  ],
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@storybook/addon-actions": "^5.3.18",
     "@storybook/addon-links": "^5.3.18",
