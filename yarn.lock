@@ -13316,19 +13316,7 @@ resolve@1.15.0:
   languageName: node
   linkType: hard
 
-"ts-pnp@npm:1.1.6":
-  version: 1.1.6
-  resolution: "ts-pnp@npm:1.1.6"
-  peerDependencies:
-    typescript: "*"
-  peerDependenciesMeta:
-    typescript:
-      optional: true
-  checksum: 3/0c1ab7d1b85820a4ad12d25f18e6e9b68e57095412cb436266e8d0c58508892d871cd6d39512701e1117b0ad6354f0596d7f9ef9a0e630538ef3c7ff1970e0ef
-  languageName: node
-  linkType: hard
-
-"ts-pnp@npm:^1.1.6":
+"ts-pnp@npm:^1.1.6, ts-pnp@npm:^1.2.0":
   version: 1.2.0
   resolution: "ts-pnp@npm:1.2.0"
   peerDependencies:
