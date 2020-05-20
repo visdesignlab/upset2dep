@@ -16,7 +16,10 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: "Setup environment"
-        run: "yarn run setup-yarn"
+        run: "yarn set version berry"
+      - run: "yarn plugin import workspace-tools"
+      - run: "yarn add shx"
+      - run: "yarn run copy_patch"
       - name: Install Packages
         run: yarn install
       - name: Build page
