@@ -1,0 +1,17 @@
+{
+  "name": "upset2",
+  "version": "0.0.0",
+  "private": true,
+  "repository": "https://github.com/visdesignlab/upset2dep.git",
+  "author": {
+    "name": "Kiran Gadhave",
+    "email": "kirangadhave2@gmail.com",
+    "url": "https://vdl.sci.utah.edu/"
+  },
+  "license": "MIT",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ]
+  }
+}
