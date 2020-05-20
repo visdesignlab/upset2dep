@@ -8,11 +8,9 @@
     "url": "https://vdl.sci.utah.edu/"
   },
   "license": "MIT",
-  "workspaces": {
-    "packages": [
-      "packages/*"
-    ]
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "homepage": "https://github.com/visdesignlab/upset2dep",
   "bugs": {
     "url": "https://github.com/visdesignlab/upset2dep/issues"
@@ -22,6 +20,6 @@
     "url": "https://github.com/visdesignlab/upset2dep.git"
   },
   "scripts": {
-    "setup-env": "yarn set version berry && yarn plugin import workspace-tools && yarn install"
+    "setup-env": "yarn set version berry && yarn install"
   }
 }
