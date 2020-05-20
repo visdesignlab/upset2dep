@@ -21,7 +21,7 @@
   },
   "scripts": {
     "setup-sdk": "yarn dlx @yarnpkg/pnpify --sdk",
-    "lint": "yarn workspaces foreach -v -p --topological-dev --include upset-react run lint",
+    "lint": "yarn workspaces foreach -v -p --topological-dev --include upset-react --include upset-core run lint",
     "start": "yarn workspaces foreach -v -p --topological-dev run start",
     "commit": "yarn dlx git-cz"
   },
