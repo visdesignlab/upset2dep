@@ -20,5 +20,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/visdesignlab/upset2dep.git"
+  },
+  "scripts": {
+    "setup-env": "yarn set version berry && yarn plugin import workspace-tools && yarn install"
   }
 }
