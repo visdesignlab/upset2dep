@@ -20,6 +20,11 @@
     "url": "https://github.com/visdesignlab/upset2dep.git"
   },
   "scripts": {
-    "setup-env": "yarn set version berry && yarn install"
+    "copy_patch": "shx cat yarn_extra/yarnrc_patch.yml >> .yarnrc.yml",
+    "setup-yarn": "yarn set version berry && yarn plugin import workspace-tools && yarn add shx && yarn run copy_patch",
+    "start": "yarn workspaces foreach -v -p --topological-dev run start"
+  },
+  "dependencies": {
+    "shx": "^0.3.2"
   }
 }
