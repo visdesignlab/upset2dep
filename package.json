@@ -21,16 +21,44 @@
   },
   "scripts": {
     "setup-sdk": "yarn dlx @yarnpkg/pnpify --sdk",
-    "start": "yarn workspaces foreach -v -p --topological-dev run start"
+    "lint": "yarn workspaces foreach -v -p --topological-dev --include upset-react run lint",
+    "start": "yarn workspaces foreach -v -p --topological-dev run start",
+    "commit": "yarn dlx git-cz"
   },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn lint",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "devDependencies": {
     "@commitlint/cli": "^8.3.5",
     "@commitlint/config-conventional": "^8.3.4",
+    "@typescript-eslint/eslint-plugin": "^2.34.0",
+    "@typescript-eslint/parser": "^2.34.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.0.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-airbnb-typescript": "^7.2.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-config-react-app": "^5.2.1",
+    "eslint-import-resolver-typescript": "^2.0.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-flowtype": "^5.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.3",
+    "eslint-plugin-react": "^7.20.0",
+    "eslint-plugin-react-hooks": "^4.0.2",
+    "husky": "^4.2.5",
+    "prettier": "^2.0.5",
+    "prettier-eslint": "^9.0.1",
+    "prettier-eslint-cli": "^5.0.0",
     "shx": "^0.3.2",
     "typescript": "^3.9.3"
   }
