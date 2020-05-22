@@ -1,3 +1,3 @@
-export default function generateRandomNumberString(): string {
-  return `Randomness!! is: ${Math.random()}`;
-}
+import { loadMovies } from './loadFile';
+
+loadMovies();

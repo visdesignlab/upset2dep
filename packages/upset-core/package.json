@@ -27,6 +27,7 @@
   "author": "Kiran Gadhave",
   "module": "dist/upset-core.esm.js",
   "devDependencies": {
+    "@types/d3-dsv": "^1.0.36",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "babel-eslint": "^10.1.0",
@@ -58,6 +59,8 @@
     "typescript": "^3.9.3"
   },
   "dependencies": {
-    "core-js": "^3.6.5"
+    "axios": "^0.19.2",
+    "core-js": "^3.6.5",
+    "d3-dsv": "^1.2.0"
   }
 }
