@@ -32,7 +32,7 @@
   "author": "Kiran Gadhave",
   "module": "dist/upset-react.esm.js",
   "dependencies": {
-    "upset-core": "^0.1.0"
+    "upset-core": "^0.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.6",

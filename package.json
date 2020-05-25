@@ -28,6 +28,7 @@
     "eslint-plugin-react-hooks": "^4.0.2",
     "husky": "^4.2.5",
     "lerna": "^3.22.0",
+    "lint-staged": "^10.2.6",
     "prettier": "^2.0.5",
     "prettier-eslint": "^10.1.1",
     "prettier-eslint-cli": "^5.0.0"
@@ -37,7 +38,8 @@
     "start": "lerna run --parallel --ignore web-app start",
     "lint": "lerna exec eslint -- --ext .js,.jsx,.ts,.tsx src --color",
     "lint:fix": "lerna exec prettier -- --write",
-    "commit": "npx git-cz"
+    "commit": "npx git-cz",
+    "release": "cross-env HUSKY_BYPASS=true lerna publish"
   },
   "config": {
     "commitizen": {
