@@ -38,14 +38,25 @@
     "lint": "lerna exec eslint -- --ext .js,.jsx,.ts,.tsx src --color",
     "commit": "npx git-cz"
   },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
   },
+  "lint-staged": {
+    "{src,test}/**/*.ts*": [
+      "prettier --write",
+      "git add"
+    ]
+  },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint",
+      "pre-commit": "lint-staged",
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   }
