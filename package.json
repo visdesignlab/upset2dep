@@ -1,0 +1,10 @@
+{
+  "name": "@visdesignlab/upset",
+  "repository": "https://github.com/visdesignlab/upset2dep.git",
+  "author": "Kiran Gadhave <kirangadhave2@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.22.0"
+  }
+}
