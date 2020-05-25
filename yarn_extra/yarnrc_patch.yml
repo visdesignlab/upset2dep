@@ -1,4 +1,0 @@
-packageExtensions:
-  react-scripts@*:
-    dependencies:
-      ts-pnp: "^1.2.0"
