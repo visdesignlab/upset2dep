@@ -49,9 +49,7 @@
     ]
   },
   "lint-staged": {
-    "{src,test}/**/*.ts*": [
-      "prettier --write"
-    ]
+    "*.{js,jsx,ts,tsx}": "eslint --cached --fix"
   },
   "husky": {
     "hooks": {
