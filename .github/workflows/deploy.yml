@@ -15,12 +15,12 @@ jobs:
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      # - name: Install Packages
-      #   run: yarn install
-      # - name: Build page
-      #   run: yarn workspace @upset2dep/web build
-      # - name: Deploy to gh-pages
-      #   uses: peaceiris/actions-gh-pages@v3
-      #   with:
-      #     github_token: ${{ secrets.GITHUB_TOKEN }}
-      #     publish_dir: ./packages/web/build
+      - name: Install Packages
+        run: yarn install
+      - name: Build page
+        run: yarn workspace web-app run build
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./packages/web-app/build
