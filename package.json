@@ -9,5 +9,9 @@
   ],
   "devDependencies": {
     "lerna": "^3.22.0"
+  },
+  "scripts": {
+    "prestart": "lerna run --scope upset-core --scope upset-react build",
+    "start": "lerna run --parallel --ignore web-app start"
   }
 }
