@@ -8,7 +8,6 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 // Please do not use types off of a default export module or else Storybook Docs will suffer.
 // see: https://github.com/storybookjs/storybook/issues/9556
 export const Thing: FC<Props> = ({ children }) => {
-  return (
-    <div>{children || `This is cool: ${generateRandomString()} Yay!`}</div>
-  );
+  if (children) console.log('Test');
+  return <div>{`This is cool: ${generateRandomString()} Yay!`}</div>;
 };
