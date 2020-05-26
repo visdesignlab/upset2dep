@@ -10,7 +10,7 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 export const Thing: FC<Props> = ({ children }) => {
   return (
     <div>
-      {children || `This is cool: ${generateRandomString()} Yay! Really`}
+      {children || `This is cool: ${generateRandomString()} Yay! Really 2`}
     </div>
   );
 };
