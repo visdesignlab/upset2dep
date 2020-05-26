@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.1.0 (2020-05-26)
+
+
+### Features
+
+* 🎸 New feature ([60c8823](https://github.com/visdesignlab/upset2dep/commit/60c8823d56a3ee4e506f176719721a5f6126e3a3))
+
+
+
+
+
 ## 0.0.8 (2020-05-26)
 
 **Note:** Version bump only for package upset-core
