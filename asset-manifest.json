@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/upset2dep/static/css/main.5f361e03.chunk.css",
-    "main.js": "/upset2dep/static/js/main.2839162f.chunk.js",
-    "main.js.map": "/upset2dep/static/js/main.2839162f.chunk.js.map",
+    "main.js": "/upset2dep/static/js/main.d6929eb5.chunk.js",
+    "main.js.map": "/upset2dep/static/js/main.d6929eb5.chunk.js.map",
     "runtime-main.js": "/upset2dep/static/js/runtime-main.72857d43.js",
     "runtime-main.js.map": "/upset2dep/static/js/runtime-main.72857d43.js.map",
     "static/js/2.a740ac08.chunk.js": "/upset2dep/static/js/2.a740ac08.chunk.js",
     "static/js/2.a740ac08.chunk.js.map": "/upset2dep/static/js/2.a740ac08.chunk.js.map",
     "index.html": "/upset2dep/index.html",
-    "precache-manifest.b394ae227cc69c59855d899cbc63af81.js": "/upset2dep/precache-manifest.b394ae227cc69c59855d899cbc63af81.js",
+    "precache-manifest.ef0b0b60aaa2352d9f95934a46853508.js": "/upset2dep/precache-manifest.ef0b0b60aaa2352d9f95934a46853508.js",
     "service-worker.js": "/upset2dep/service-worker.js",
     "static/css/main.5f361e03.chunk.css.map": "/upset2dep/static/css/main.5f361e03.chunk.css.map",
     "static/js/2.a740ac08.chunk.js.LICENSE.txt": "/upset2dep/static/js/2.a740ac08.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.72857d43.js",
     "static/js/2.a740ac08.chunk.js",
     "static/css/main.5f361e03.chunk.css",
-    "static/js/main.2839162f.chunk.js"
+    "static/js/main.d6929eb5.chunk.js"
   ]
 }
