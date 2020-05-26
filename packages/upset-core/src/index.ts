@@ -1,3 +1,3 @@
-export default function generateRandomString() {
-  return Math.random().toFixed(5);
-}
+import { loadMovies } from './loadFile';
+
+loadMovies();

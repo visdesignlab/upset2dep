@@ -26,8 +26,13 @@
   "author": "Kiran Gadhave",
   "module": "dist/upset-core.esm.js",
   "devDependencies": {
+    "@types/d3-dsv": "^1.0.36",
     "tsdx": "^0.13.2",
     "tslib": "^2.0.0",
     "typescript": "^3.9.3"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "d3-dsv": "^1.2.0"
   }
 }
