@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/visdesignlab/upset2dep/compare/upset-react@0.1.0...upset-react@0.2.0) (2020-05-26)
+
+
+### Features
+
+* 🎸 Update ([0361279](https://github.com/visdesignlab/upset2dep/commit/036127967604d507b8b6ee3e77a048b23f84a029))
+
+
+
+
+
 # 0.1.0 (2020-05-26)
 
 
