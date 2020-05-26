@@ -19,6 +19,8 @@ jobs:
         run: yarn install
       - name: Build Libraries
         run: yarn build
+      - name: Publish to npm
+        run: yarn release
       - name: Build page
         run: yarn workspace web-app run build
       - name: Deploy to gh-pages
