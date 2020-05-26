@@ -4,6 +4,6 @@
   "useWorkspaces": true,
   "version": "independent",
   "command": {
-    "publish": { "conventionalCommits": true }
+    "publish": { "conventionalCommits": true, "yes": true }
   }
 }
