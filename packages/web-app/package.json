@@ -1,6 +1,6 @@
 {
   "name": "web-app",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://vdl.sci.utah.edu/upset2dep/",
   "private": true,
   "dependencies": {
@@ -15,7 +15,7 @@
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.1",
     "typescript": "~3.7.2",
-    "upset-react": "^0.0.1"
+    "upset-react": "^0.0.2"
   },
   "scripts": {
     "start": "react-scripts start",
