@@ -9,6 +9,8 @@ export interface Props extends HTMLAttributes<HTMLDivElement> {
 // see: https://github.com/storybookjs/storybook/issues/9556
 export const Thing: FC<Props> = ({ children }) => {
   return (
-    <div>{children || `This is cool: ${generateRandomString()} Yay!`}</div>
+    <div>
+      {children || `This is cool: ${generateRandomString()} Yay! Really`}
+    </div>
   );
 };
