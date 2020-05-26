@@ -41,7 +41,7 @@
     "lint": "lerna exec eslint -- --ext .js,.jsx,.ts,.tsx src --color",
     "lint:fix": "lerna exec prettier -- --write",
     "commit": "npx git-cz",
-    "release": "CI=true cross-env HUSKY_BYPASS=true lerna publish -- --conventional-commits"
+    "release": "CI=true cross-env HUSKY_BYPASS=true lerna publish --conventional-commits"
   },
   "config": {
     "commitizen": {
