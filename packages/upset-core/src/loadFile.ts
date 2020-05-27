@@ -10,7 +10,10 @@ export async function loadFromJSON(url: string): Promise<Data | null> {
   const rawData = await axios.get(jsonSpec.file);
   const data = getData(rawData.data, jsonSpec);
   const sets = getSets(data);
-  getExclusiveIntersections(sets);
+  const intersections = getExclusiveIntersections(sets, data);
+
+  console.log(intersections.filter((d) => d.degree === 4));
+
   return null;
 }
 
