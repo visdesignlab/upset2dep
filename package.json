@@ -37,7 +37,7 @@
   "scripts": {
     "build": "lerna run --scope upset-core --scope upset-react build",
     "prestart": "yarn run build",
-    "start": "lerna run --parallel --ignore web-app start",
+    "start": "lerna run --parallel --stream --ignore web-app start",
     "lint": "lerna exec eslint -- --ext .js,.jsx,.ts,.tsx src --color",
     "lint:fix": "lerna exec prettier -- --write",
     "commit": "npx git-cz",

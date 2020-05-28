@@ -188,12 +188,12 @@ export function exclusiveIntersectionCalculator<T>(
 
     if (elems.length === 0) return;
 
-    const sets = new Set(combo);
+    const setsFromCombo = new Set(combo);
 
     combinations.push({
       type: 'intersection',
       elements: elems,
-      sets,
+      sets: setsFromCombo,
       setList: Array.from(sets)
         .map((s) => s.name)
         .sort(),
