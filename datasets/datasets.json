@@ -1,5 +1,6 @@
 [
   "data/simpsons/simpsons.json",
+  "data/movies/movies.json",
   "data/fruit/fruit.json",
 
   "data/mutations/mutations20.json",
