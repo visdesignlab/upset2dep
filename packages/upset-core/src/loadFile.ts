@@ -4,6 +4,7 @@ import { Sets, SetCombination } from 'Types/Model';
 import { getExclusiveIntersections } from './Proc/getExclusiveIntersections';
 import { getSets } from './Proc/getSets';
 import { DataJSONSpec, getData, parseJSONSpec, DataRow } from './Types/Data';
+import { datasetPath } from '.';
 
 export async function loadFromJSON(
   url: string
@@ -18,8 +19,9 @@ export async function loadFromJSON(
   return { sets, intersections };
 }
 
-export function loadMovies() {
-  return loadFromJSON(
-    'https://raw.githubusercontent.com/visdesignlab/upset2/master/data/movies/movies.json'
-  );
+export async function getAllDatasets() {
+  const datasetPromise = await axios.get(`${datasetPath}/datasets.json`);
+  const datasets: string[] = datasetPromise.data;
+
+  return datasets.map((data) => `${datasetPath}/${data}`);
 }
