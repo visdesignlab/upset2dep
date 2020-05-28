@@ -14,19 +14,22 @@ export type SetIntersection<T> = BaseSet<T> & {
   readonly type: 'intersection';
   readonly sets: ReadonlySet<Set<T>>;
   readonly degree: number;
+  readonly setList: string[];
 };
 
 // Possibly not needed
-export type SetUnion<T> = SetIntersection<T> & {
+export type SetUnion<T> = BaseSet<T> & {
   readonly type: 'union';
   readonly sets: ReadonlySet<Set<T>>;
   readonly degree: number;
+  readonly setList: string[];
 };
 
-export type SetComposite<T> = SetIntersection<T> & {
+export type SetComposite<T> = BaseSet<T> & {
   readonly type: 'composite';
   readonly sets: ReadonlySet<Set<T>>;
   readonly degree: number;
+  readonly setList: string[];
 };
 
 export declare type SetCombination<T> =
