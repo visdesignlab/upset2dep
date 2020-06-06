@@ -1,3 +1,5 @@
+import { Data } from './Data';
+
 export type SetTypes = 'set' | 'intersection';
 
 export type BaseSet<T> = {
@@ -46,3 +48,8 @@ export declare type SetLikes<T> = ReadonlyArray<SetLike<T>>;
 export function getKey(setLike: SetLike<unknown>): string {
   return `${setLike.name}:${setLike.type}#${setLike.cardinality}`;
 }
+
+export type UpsetData<T> = {
+  raw: Data;
+  sets: Sets<T>;
+};

@@ -1,7 +1,7 @@
 import { dsvFormat, DSVParsedArray, DSVRowString } from 'd3-dsv';
 
 export type DataRow = {
-  name: string;
+  id: string;
   sets: string[];
   attributes: { [key: string]: unknown };
 };
@@ -68,6 +68,7 @@ export function getData(rawData: any, spec: DataJSONSpec): Data {
   const parsedData: DSVParsedArray<DSVRowString> = dsvFormat(spec.sep).parse(
     rawData
   );
+
   const { columns = [] } = parsedData;
 
   const setColumns = getSetColumns(columns, spec.setInfo);
@@ -91,7 +92,7 @@ export function getData(rawData: any, spec: DataJSONSpec): Data {
     });
 
     return {
-      name: hasId ? d[hasId.name] || i.toString() : i.toString(),
+      id: hasId ? d[columns[hasId.index]] || i.toString() : i.toString(),
       sets: isMemberOf.sort(),
       attributes,
     };

@@ -1,6 +1,6 @@
 {
   "extends": "../../tsconfig.json",
-  "include": ["src", "types"],
+  "include": ["src", "types", "../upset-core/src/Types/config.ts"],
   "compilerOptions": {
     "module": "esnext",
     "lib": ["dom", "esnext"],

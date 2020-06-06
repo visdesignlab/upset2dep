@@ -1,4 +1,5 @@
-import { Sets, SetCombination, Set as SSet } from './Model';
+import { Sets, SetIntersection } from './Model';
+import { DataRow } from './Data';
 
 export type IntersectionGeneratorOptions = {
   min: number;
@@ -68,60 +69,59 @@ export function intersectionGeneratorAdvanced<T>(
   }
 }
 
+function setUpBitMaskGenerator(superArr: string[]) {
+  const cacheKeyJoiner = '|-|-|';
+  const cache: { [key: string]: string } = {
+    notPartOfAnySet: superArr.map((_) => 0).join(''),
+  };
+
+  function getBitMaskLikeString(subsetArrUnfixed: string[]): string {
+    const subsetArr = subsetArrUnfixed.filter((s) => superArr.includes(s));
+    if (subsetArr.length > superArr.length)
+      throw new Error('subset array cannot be longer than super array');
+
+    if (subsetArr.length === 0) return cache.notPartOfAnySet;
+
+    const cacheKey = subsetArr.join(cacheKeyJoiner);
+
+    const cachedValue = cache[cacheKey];
+    if (cachedValue) return cachedValue;
+
+    const bitMask = superArr
+      .map((superVal) => (subsetArr.includes(superVal) ? 1 : 0))
+      .join('');
+
+    cache[cacheKey] = bitMask;
+
+    return bitMask;
+  }
+
+  return getBitMaskLikeString;
+}
+
 export function intersectionBuilder<T>(
   sets: Sets<T>,
-  allElements: ReadonlyArray<T>,
-  notPartOfAnySets?: ReadonlyArray<T> | number,
-  toElemKey?: (v: T) => string
+  allElements: ReadonlyArray<T>
 ) {
-  const setElems = new Map(
-    sets.map((s) => [
-      s,
-      toElemKey ? new Set(s.elements.map(toElemKey!)) : new Set(s.elements),
-    ])
-  );
+  const getBitMaskLikeString = setUpBitMaskGenerator(sets.map((s) => s.name));
 
-  const setDirectElems = toElemKey ? null : (setElems as Map<SSet<T>, Set<T>>);
+  const subsetElementRecord: { [key: string]: Array<T> } = {};
 
-  const setKeyElems = toElemKey
-    ? (setElems as Map<SSet<T>, Set<string>>)
-    : null;
+  allElements.forEach((el) => {
+    const element = (el as unknown) as DataRow;
+    const bitMask = getBitMaskLikeString(element.sets);
 
-  function compute(intersection: Sets<T>) {
-    if (intersection.length === 0) {
-      if (Array.isArray(notPartOfAnySets)) {
-        return notPartOfAnySets;
-      }
+    if (!subsetElementRecord[bitMask]) subsetElementRecord[bitMask] = [];
 
-      if (setKeyElems && toElemKey) {
-        const lookup = Array.from(setKeyElems.values());
+    subsetElementRecord[bitMask].push(el);
+  });
 
-        return allElements.filter((e) =>
-          lookup.every((s) => !s.has(toElemKey(e)))
-        );
-      }
+  function compute(intersection: Sets<T>): ReadonlyArray<T> {
+    const bitMask = getBitMaskLikeString(intersection.map((s) => s.name));
 
-      const lookup = Array.from(setDirectElems!.values());
+    const record = subsetElementRecord[bitMask];
 
-      return allElements.filter((e) => lookup.every((s) => !s.has(e)));
-    }
-
-    if (intersection.length === 1) return intersection[0].elements;
-
-    const smallest = intersection.reduce(
-      (acc, d) => (!acc || acc.length > d.elements.length ? d.elements : acc),
-      null as ReadonlyArray<T> | null
-    )!;
-
-    if (setKeyElems && toElemKey) {
-      return smallest.filter((el) => {
-        const key = toElemKey(el);
-        return intersection.every((s) => setKeyElems.get(s)!.has(key));
-      });
-    }
-    return smallest.filter((el) =>
-      intersection.every((s) => setDirectElems!.get(s)!.has(el))
-    );
+    return record || [];
   }
 
   return compute;
@@ -152,61 +152,46 @@ export function getPowerSets<T>(
 
 export function exclusiveIntersectionCalculator<T>(
   sets: Sets<T>,
-  allElements: ReadonlyArray<T>,
-  notPartOfAnySets?: ReadonlyArray<T> | number,
-  toElemKey?: (v: T) => string
-): SetCombination<T>[] {
+  allElements: ReadonlyArray<T>
+): SetIntersection<T>[] {
+  console.clear();
+
   const jString = ' & ';
 
-  const combinations: SetCombination<T>[] = [];
+  const combinations: SetIntersection<T>[] = [];
 
-  const compute = intersectionBuilder(
-    sets,
-    allElements,
-    notPartOfAnySets,
-    toElemKey
-  );
+  const compute = intersectionBuilder(sets, allElements);
 
   getPowerSets(sets).forEach((combo) => {
-    if (
-      combo.length === 0 &&
-      typeof notPartOfAnySets === 'number' &&
-      notPartOfAnySets > 0
-    ) {
+    const elements = compute(combo);
+
+    if (combo.length === 0) {
       combinations.push({
         type: 'intersection',
-        elements: [],
+        elements,
         sets: new Set(),
         setList: [],
         name: '()',
-        cardinality: notPartOfAnySets,
+        cardinality: elements.length,
         degree: 0,
       });
-      return;
+    } else {
+      combinations.push({
+        type: 'intersection',
+        elements,
+        sets: new Set(combo),
+        setList: combo.map((s) => s.name).sort(),
+        name:
+          combo.length === 1
+            ? combo[0].name
+            : `(${combo
+                .map((c) => c.name)
+                .sort()
+                .join(jString)})`,
+        cardinality: elements.length,
+        degree: combo.length,
+      });
     }
-    const elems = compute(combo);
-
-    if (elems.length === 0) return;
-
-    const setsFromCombo = new Set(combo);
-
-    combinations.push({
-      type: 'intersection',
-      elements: elems,
-      sets: setsFromCombo,
-      setList: Array.from(sets)
-        .map((s) => s.name)
-        .sort(),
-      name:
-        combo.length === 1
-          ? combo[0].name
-          : `(${combo
-              .map((c) => c.name)
-              .sort()
-              .join(jString)})`,
-      cardinality: elems.length,
-      degree: combo.length,
-    });
   });
 
   return combinations;
